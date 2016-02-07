@@ -1,0 +1,27 @@
+{
+  "name": "js-games-server",
+  "version": "0.0.1",
+  "description": "A server for use with the js-games project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --cache --quiet ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmurphey/js-games-server.git"
+  },
+  "author": "Rebecca Murphey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rmurphey/js-games-server/issues"
+  },
+  "homepage": "https://github.com/rmurphey/js-games-server#readme",
+  "dependencies": {
+    "restify": "^4.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3"
+  }
+}
