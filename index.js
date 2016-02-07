@@ -1,5 +1,7 @@
 'use strict';
 
+require('babel-register');
+
 let restify = require('restify');
 let routes = require('./routes');
 
@@ -7,14 +9,8 @@ var server = restify.createServer({
   name : 'js-games-server'
 });
 
-// CORS
-server.use(
-  (req,res,next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    return next();
-  }
-);
+server.use(restify.CORS());
+server.use(restify.bodyParser());
 
 routes(server);
 

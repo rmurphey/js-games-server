@@ -2,12 +2,14 @@
 
 let path = require('path');
 let fs = require('fs');
+let cache = require('memory-cache');
+let md5 = require('md5');
 
 module.exports = function (server) {
   let dictionaries = {};
 
   server.get('/magnetic-poetry/:dictionary', (req, res) => {
-    let dictionary = req.params.dictionary;
+    let { dictionary } = req.params;
     let words = dictionaries[dictionary];
 
     if (words) {
@@ -26,6 +28,20 @@ module.exports = function (server) {
 
         res.json(200, { words });
       }
+    )
+  });
+
+  server.post('/magnetic-poetry/poem', (req, res) => {
+    let key = md5(JSON.stringify(req.body));
+    cache.put(key, req.body);
+    res.json(200, { key });
+  });
+
+  server.get('/magnetic-poetry/poem/:key', (req, res) => {
+    let { key } = req.params;
+    res.json(
+      200,
+      cache.get(key) || {}
     )
   });
 };
