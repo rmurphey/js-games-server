@@ -41,7 +41,7 @@ module.exports = function (server) {
     let { key } = req.params;
     res.json(
       200,
-      cache.get(key) || {}
+      JSON.parse(cache.get(key) || '')
     )
   });
 };
