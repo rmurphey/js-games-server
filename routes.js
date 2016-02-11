@@ -8,7 +8,7 @@ let md5 = require('md5');
 module.exports = function (server) {
   let dictionaries = {};
 
-  server.get('/magnetic-poetry/:dictionary', (req, res) => {
+  server.get('/magnetic-poetry/dictionary/:dictionary', (req, res) => {
     let { dictionary } = req.params;
     let words = dictionaries[dictionary];
 
