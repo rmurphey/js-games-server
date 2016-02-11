@@ -14,6 +14,6 @@ server.use(restify.bodyParser());
 
 routes(server);
 
-server.listen(9000);
+server.listen(process.env.PORT || 9000);
 
-console.log('server listening at http://localhost:9000');
+console.log('server listening at http://localhost:' + process.env.PORT);
